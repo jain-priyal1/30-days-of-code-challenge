@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isPalindrome(int n) {
+      long ans=0;
+      long long temp=n;
+      while(temp>0)
+      {
+          int l=temp%10;
+          ans=ans*10+l;
+          temp/=10;
+      } 
+      return(ans==n);
+    }
+}
