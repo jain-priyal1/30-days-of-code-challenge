@@ -1,0 +1,29 @@
+class Solution {
+public:
+long long int bsearch(int x)
+{
+    int s=0;
+    int e=x;
+    int ans=-1;
+    while(s<=e)
+    {
+        long long int mid=s+(e-s)/2;
+        //if mid has large value then its sq will be out of integer range
+        long long int sq=mid*mid;
+        if(sq==x)
+        return mid;
+
+        else if(sq<x){
+        ans=mid;
+        s=mid+1;
+        }
+        else
+        e=mid-1;
+    }
+    return ans;
+}
+    int mySqrt(int x) {
+        return bsearch(x);
+        
+    }
+};
