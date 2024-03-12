@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int i=0;
+        int ansIndex=0;
+        int n=chars.size();
+        while(i<n)
+        {
+            int j=i+1;
+            while(j<n && chars[i]==chars[j])
+            {
+                j++;
+            }
+            //out of loop when whole vector is traversed or new char occurs
+
+            //storing the old character
+            chars[ansIndex++]=chars[i];
+
+            //i points to first occurence of character 
+            //j points to new occured character
+            //so difference gives count
+            int count=j-i;
+            // store only if greater than 1
+            if(count>1){
+            //in case greater than 10 i.e. 2 digits so store seperately
+            string cnt=to_string(count);
+
+            //converting count to single digit & saving in ans
+            for(char ch:cnt)
+            {
+                chars[ansIndex++]=ch;
+            }
+        }
+        //for the next character
+        i=j;}
+        return ansIndex;
+    }
+};
