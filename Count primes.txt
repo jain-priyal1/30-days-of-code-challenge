@@ -1,0 +1,23 @@
+class Solution {
+public:
+    //sieve of eratosthenes
+    int countPrimes(int n) {
+        int count=0;
+        //create a vector and mark every number as true i.e. prime
+        vector<bool> prime(n+1,true);
+        //0 and 1 are not prime
+        prime[0]=prime[1]=false;
+
+        for(int i=2;i<n;i++ )
+        {
+            if(prime[i]){
+                count++;
+            //if 2 is prime then its multiple will not be prime so mark them as false
+                for(int j=2*i;j<n;j=j+i){
+                prime[j]=0;
+                }
+            }
+        }
+        return count;
+    }
+};
